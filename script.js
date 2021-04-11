@@ -17,10 +17,11 @@ const cover = document.getElementById('cover');
 const songs = ['butterfly', 'fukaiMori', 'haruYoKoi', 'hitohiraNoHanabira'];
 
 // keep track of the songs, iterator
-let songIndex = 0;
+let songIndex = 3;
 
 // init songs
 loadSong(songs[songIndex]);
+
 
 
 
@@ -37,16 +38,49 @@ function loadSong(song) {
     musicContainer.classList.add('play');
     playBtn.querySelector('i.fas').classList.remove('fa-play');
     playBtn.querySelector('i.fas').classList.add('fa-pause');
+    // html audio tag has its own api
+    // we are going to use that, just call .play() method
+    audio.play();
+
   }
   //pause song
   function pauseSong() {
     musicContainer.classList.remove('play');
     playBtn.querySelector('i.fas').classList.add('fa-play');
     playBtn.querySelector('i.fas').classList.remove('fa-pause');
+    audio.pause();
+  }
+
+  // previous song
+  function prevSong() {
+    songIndex--;
+
+    if(songIndex < 0) {
+        // loops if we are at the last song and go back
+        songIndex = songs.length - 1;
+    }
+
+    loadSong(songs[songIndex]);
+    playSong();
+  }
+
+  // next song
+  function nextSong() {
+    songIndex++;
+
+    if(songIndex >songs.length - 1) {
+        
+        songIndex = 0
+    }
+
+    loadSong(songs[songIndex]);
+    playSong();
   }
 
   //-------- EVENT LISTENERS ---------------------
 
+
+  // play/pause button
   playBtn.addEventListener('click',function() {
       const isPlaying = musicContainer.classList.contains('play');
 
@@ -56,4 +90,8 @@ function loadSong(song) {
           playSong();
       }
   });
+
+  // previous button
+  prevBtn.addEventListener('click', prevSong);
+  nextBtn.addEventListener('click', nextSong);
 
