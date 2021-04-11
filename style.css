@@ -136,5 +136,21 @@ body {
 }
 
 /* progress bar*/
+.progress-container {
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 5px;
+    width: 100%;
+}
 
+.progress {
+    background-color: #080bc7;
+    border-radius: 5px;
+    height: 100%;
+    /* width is what 'fills' the bar*/
+    width: 0%;
+    transition: width 0.1s linear;
+}
 
