@@ -14,7 +14,7 @@ const cover = document.getElementById('cover');
 
 // song titles in an array
 // should match song names in folder
-const songs = ['butterfly', 'fukaiMori', 'haruYoKoi', 'hitohiraNoHanabira'];
+const songs = ['Butterfly', 'Fukai Mori', 'Haru Yo Koi', 'Hitohira No Hanabira'];
 
 // keep track of the songs, iterator
 let songIndex = 3;
